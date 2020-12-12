@@ -83,6 +83,12 @@ exports.scopeDefaults = {
         projType: 'mercator',
         projRotate: [0, 0, 0]
     },
+    china: {
+        lonaxisRange: [75, 140],
+        lataxisRange: [0, 55],
+        projType: 'mercator',
+        projRotate: [0, 0, 0]
+    },
     africa: {
         lonaxisRange: [-30, 60],
         lataxisRange: [-40, 40],
@@ -118,6 +124,7 @@ exports.waterColor = '#3399FF';
 exports.locationmodeToLayer = {
     'ISO-3': 'countries',
     'USA-states': 'subunits',
+    'ISO 3166-2:CN': 'subunits',
     'country names': 'countries'
 };
 

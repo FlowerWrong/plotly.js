@@ -43566,6 +43566,7 @@ var countryIds = Object.keys(countryRegex);
 var locationmodeToIdFinder = {
     'ISO-3': identity,
     'USA-states': identity,
+    'ISO 3166-2:CN': identity,
     'country names': countryNameToISO3
 };
 
@@ -43601,6 +43602,14 @@ function locationToFeature(locationmode, location, features) {
             for(i = 0; i < features.length; i++) {
                 f = features[i];
                 if(f.properties && f.properties.gu && f.properties.gu === 'USA') {
+                    filteredFeatures.push(f);
+                }
+            }
+        } else if(locationmode === 'ISO 3166-2:CN') {
+            filteredFeatures = [];
+            for(i = 0; i < features.length; i++) {
+                f = features[i];
+                if(f.properties && f.properties.gu && f.properties.gu === 'CHN') {
                     filteredFeatures.push(f);
                 }
             }
@@ -84007,7 +84016,7 @@ module.exports = overrideAll({
     },
     locationmode: {
         valType: 'enumerated',
-        values: ['ISO-3', 'USA-states', 'country names', 'geojson-id'],
+        values: ['ISO-3', 'USA-states', 'ISO 3166-2:CN', 'country names', 'geojson-id'],
         
         dflt: 'ISO-3',
         

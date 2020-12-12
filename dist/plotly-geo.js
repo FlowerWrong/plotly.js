@@ -44020,6 +44020,7 @@ var countryIds = Object.keys(countryRegex);
 var locationmodeToIdFinder = {
     'ISO-3': identity,
     'USA-states': identity,
+    'ISO 3166-2:CN': identity,
     'country names': countryNameToISO3
 };
 
@@ -44055,6 +44056,14 @@ function locationToFeature(locationmode, location, features) {
             for(i = 0; i < features.length; i++) {
                 f = features[i];
                 if(f.properties && f.properties.gu && f.properties.gu === 'USA') {
+                    filteredFeatures.push(f);
+                }
+            }
+        } else if(locationmode === 'ISO 3166-2:CN') {
+            filteredFeatures = [];
+            for(i = 0; i < features.length; i++) {
+                f = features[i];
+                if(f.properties && f.properties.gu && f.properties.gu === 'CHN') {
                     filteredFeatures.push(f);
                 }
             }
@@ -70571,6 +70580,12 @@ exports.scopeDefaults = {
         projType: 'mercator',
         projRotate: [0, 0, 0]
     },
+    china: {
+        lonaxisRange: [75, 140],
+        lataxisRange: [0, 55],
+        projType: 'mercator',
+        projRotate: [0, 0, 0]
+    },
     africa: {
         lonaxisRange: [-30, 60],
         lataxisRange: [-40, 40],
@@ -70606,6 +70621,7 @@ exports.waterColor = '#3399FF';
 exports.locationmodeToLayer = {
     'ISO-3': 'countries',
     'USA-states': 'subunits',
+    'ISO 3166-2:CN': 'subunits',
     'country names': 'countries'
 };
 
@@ -72058,13 +72074,13 @@ function handleGeoDefaults(geoLayoutIn, geoLayoutOut, coerce, opts) {
         coerce('riverwidth');
     }
 
-    show = coerce('showcountries', isScoped && scope !== 'usa' && visible);
+    show = coerce('showcountries', isScoped && scope !== 'usa' && scope !== 'china' && visible);
     if(show) {
         coerce('countrycolor');
         coerce('countrywidth');
     }
 
-    if(scope === 'usa' || (scope === 'north america' && resolution === 50)) {
+    if(scope === 'usa' || scope === 'china' || (scope === 'north america' && resolution === 50)) {
         // Only works for:
         //   USA states at 110m
         //   USA states + Canada provinces at 50m
@@ -84205,7 +84221,7 @@ module.exports = overrideAll({
     },
     locationmode: {
         valType: 'enumerated',
-        values: ['ISO-3', 'USA-states', 'country names', 'geojson-id'],
+        values: ['ISO-3', 'USA-states', 'ISO 3166-2:CN', 'country names', 'geojson-id'],
         
         dflt: 'ISO-3',
         
