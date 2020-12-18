@@ -42,13 +42,13 @@ module.exports = overrideAll({
     },
     locationmode: {
         valType: 'enumerated',
-        values: ['ISO-3', 'USA-states', 'country names', 'geojson-id'],
+        values: ['ISO-3', 'USA-states', 'ISO 3166-2:CN', 'country names', 'geojson-id'],
         role: 'info',
         dflt: 'ISO-3',
         description: [
             'Determines the set of locations used to match entries in `locations`',
             'to regions on the map.',
-            'Values *ISO-3*, *USA-states*, *country names* correspond to features on',
+            'Values *ISO-3*, *USA-states*, *ISO 3166-2:CN*, *country names* correspond to features on',
             'the base map and value *geojson-id* corresponds to features from a custom',
             'GeoJSON linked to the `geojson` attribute.'
         ].join(' ')

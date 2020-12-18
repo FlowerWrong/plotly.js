@@ -175,13 +175,13 @@ function handleGeoDefaults(geoLayoutIn, geoLayoutOut, coerce, opts) {
         coerce('riverwidth');
     }
 
-    show = coerce('showcountries', isScoped && scope !== 'usa' && visible);
+    show = coerce('showcountries', isScoped && scope !== 'usa'&& scope !== 'china' && visible);
     if(show) {
         coerce('countrycolor');
         coerce('countrywidth');
     }
 
-    if(scope === 'usa' || (scope === 'north america' && resolution === 50)) {
+    if(scope === 'usa' || scope === 'china' || (scope === 'north america' && resolution === 50)) {
         // Only works for:
         //   USA states at 110m
         //   USA states + Canada provinces at 50m

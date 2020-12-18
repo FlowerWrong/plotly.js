@@ -220,7 +220,7 @@ The `geo` partial bundle contains trace modules `scatter`, `scattergeo` and `cho
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 2.7 MB | 961.8 kB | 316.6 kB |
+| 2.7 MB | 962.1 kB | 316.7 kB |
 
 #### CDN links
 
