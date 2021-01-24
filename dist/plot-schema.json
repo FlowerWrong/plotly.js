@@ -72523,6 +72523,50 @@
                     "editType": "none"
                 }
             }
+        },
+        "pct_change": {
+            "attributes": {
+                "enabled": {
+                    "valType": "boolean",
+                    "dflt": true,
+                    "role": "info",
+                    "editType": "calc",
+                    "description": "Determines whether this pct_change transform is enabled or disabled."
+                },
+                "target": {
+                    "valType": "string",
+                    "strict": true,
+                    "noBlank": true,
+                    "arrayOk": true,
+                    "dflt": "x",
+                    "role": "info",
+                    "editType": "calc",
+                    "description": "Sets the target by which the pct_change transform is applied. If a string, *target* is assumed to be a reference to a data array in the parent trace object. To pct_change about nested variables, use *.* to access them. For example, set `target` to *marker.size* to pct_change about the marker size array. If an array, *target* is then the data array by which the pct_change transform is applied."
+                },
+                "calcType": {
+                    "valType": "string",
+                    "strict": true,
+                    "noBlank": true,
+                    "arrayOk": true,
+                    "dflt": "first",
+                    "role": "info",
+                    "editType": "calc",
+                    "description": "first or prev"
+                },
+                "editType": "calc",
+                "targetsrc": {
+                    "valType": "string",
+                    "role": "info",
+                    "description": "Sets the source reference on Chart Studio Cloud for  target .",
+                    "editType": "none"
+                },
+                "calcTypesrc": {
+                    "valType": "string",
+                    "role": "info",
+                    "description": "Sets the source reference on Chart Studio Cloud for  calcType .",
+                    "editType": "none"
+                }
+            }
         }
     },
     "frames": {

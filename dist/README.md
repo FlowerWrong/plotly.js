@@ -88,7 +88,7 @@ The main plotly.js bundle weights in at:
 
 | plotly.js | plotly.min.js | plotly.min.js + gzip | plotly-with-meta.js |
 |-----------|---------------|----------------------|---------------------|
-| 7.2 MB | 3.3 MB | 1007.1 kB | 7.5 MB |
+| 7.2 MB | 3.3 MB | 1007.4 kB | 7.5 MB |
 
 ## Partial bundles
 
