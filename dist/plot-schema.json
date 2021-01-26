@@ -72547,7 +72547,7 @@
                     "valType": "string",
                     "strict": true,
                     "noBlank": true,
-                    "arrayOk": true,
+                    "arrayOk": false,
                     "dflt": "first",
                     "role": "info",
                     "editType": "calc",
@@ -72558,12 +72558,6 @@
                     "valType": "string",
                     "role": "info",
                     "description": "Sets the source reference on Chart Studio Cloud for  target .",
-                    "editType": "none"
-                },
-                "calcTypesrc": {
-                    "valType": "string",
-                    "role": "info",
-                    "description": "Sets the source reference on Chart Studio Cloud for  calcType .",
                     "editType": "none"
                 }
             }
