@@ -51,7 +51,7 @@ exports.attributes = {
         valType: 'string',
         strict: true,
         noBlank: true,
-        arrayOk: true,
+        arrayOk: false,
         dflt: 'first',
         role: 'info',
         editType: 'calc',
@@ -82,11 +82,18 @@ exports.supplyDefaults = function(transformIn) {
 exports.calcTransform = function(gd, trace, opts) {
     if(!opts.enabled) return;
 
-    var targetArray = Lib.getTargetArray(trace, opts);
-    if(!targetArray) return;
-
     var target = opts.target;
     var calcType = opts.calcType;
+
+    var targetArray = Lib.getTargetArray(trace, opts);
+    if(!targetArray) {
+        target = Object.keys(trace.meta.columnNames).find(key => trace.meta.columnNames[key] === target)
+        opts.target = target
+        targetArray = Lib.getTargetArray(trace, opts);
+        if(!targetArray) {
+            return
+        }
+    }
 
     var len = targetArray.length;
     if(trace._length) len = Math.min(len, trace._length);
@@ -111,7 +118,7 @@ exports.calcTransform = function(gd, trace, opts) {
                 tmpIndex = j - 1;
                 break;
         }
-        arrayNew[j] = (arrayOld[j] - arrayOld[tmpIndex]) / arrayOld[j];
+        arrayNew[j] = (arrayOld[j] - arrayOld[tmpIndex]) / arrayOld[tmpIndex];
     }
     np.set(arrayNew);
 
